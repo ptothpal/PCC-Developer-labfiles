@@ -6,7 +6,7 @@
 	<groupId>io.pivotal.bookshop</groupId>
 	<artifactId>customer-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>customer-web</name>
 	<description>Customer Web project for session caching</description>
@@ -26,17 +26,12 @@
 
 	<dependencies>
 		<dependency>
-		   <groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-core</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mustache</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,12 +43,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mustache</artifactId>
-		</dependency>
 	</dependencies>
 
+	<!-- This should NOT be set as it causes the CF push to not deploy the Tomcat container and necessary code for
+	     PCC to get hooked up
 	<build>
 		<plugins>
 			<plugin>
@@ -62,6 +55,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
+    -->
 
 </project>
