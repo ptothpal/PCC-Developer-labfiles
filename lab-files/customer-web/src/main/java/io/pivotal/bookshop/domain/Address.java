@@ -1,4 +1,4 @@
-package io.pivotal.bookshop.io.pivotal.bookshop.domain;
+package io.pivotal.bookshop.domain;
 
 public class Address implements java.io.Serializable
 {

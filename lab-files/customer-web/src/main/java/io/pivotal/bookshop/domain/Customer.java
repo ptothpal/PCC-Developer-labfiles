@@ -1,4 +1,4 @@
-package io.pivotal.bookshop.io.pivotal.bookshop.domain;
+package io.pivotal.bookshop.domain;
 
 
 import java.util.ArrayList;
