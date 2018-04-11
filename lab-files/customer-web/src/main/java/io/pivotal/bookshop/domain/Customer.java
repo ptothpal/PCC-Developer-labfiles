@@ -1,12 +1,17 @@
 package io.pivotal.bookshop.domain;
 
 
+import org.apache.geode.cache.client.ClientRegionShortcut;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.gemfire.mapping.annotation.ClientRegion;
+
 import java.util.ArrayList;
 
+@ClientRegion(name = "Customer", shortcut = ClientRegionShortcut.CACHING_PROXY)
 public class Customer implements java.io.Serializable
 {
 
-	  
+	@Id
 	private Integer customerNumber;
 		
 	private String firstName;
