@@ -2,8 +2,11 @@ package io.pivotal.bookshop.dao;
 
 import io.pivotal.bookshop.domain.Address;
 import io.pivotal.bookshop.domain.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
@@ -15,6 +18,7 @@ import java.sql.SQLException;
 
 @Repository
 public class CustomerJdbcDao {
+    private Logger logger = LoggerFactory.getLogger("CustomerJdbcDao");
     private JdbcTemplate jdbcTemplate;
 
     @Autowired()
@@ -23,10 +27,17 @@ public class CustomerJdbcDao {
     }
 
     public Customer getCustomer(Integer customerId) {
-        return jdbcTemplate.queryForObject("select * from customers where customer_number = ?",
-                new CustomerMapper(),
-                customerId
-        );
+        Customer cust = null;
+        try {
+            cust = jdbcTemplate.queryForObject("select * from customers where customer_number = ?",
+                    new CustomerMapper(),
+                    customerId
+            );
+        } catch (EmptyResultDataAccessException dae) {
+            logger.info("Caught DataAccessException: " + dae.getMessage()) ;
+        }
+
+        return cust;
     }
 
     class CustomerMapper implements RowMapper<Customer> {
