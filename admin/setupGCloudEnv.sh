@@ -1,3 +1,4 @@
+#!/bin/bash
 #############################################################################
 #
 # Script designed to be run on the jumpbox. The person setting this up

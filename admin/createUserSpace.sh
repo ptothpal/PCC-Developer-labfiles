@@ -1,3 +1,4 @@
+#!/bin/bash
 #######################################################################################
 # Script designed to initialized spaces and users in a logical way where the
 # space is the same as the user.
