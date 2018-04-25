@@ -40,9 +40,12 @@ import java.util.Map;
  * 2. To set security properties of Spring Data GemFire
  *</pre>
  *
+ * A modification has been made to check to see if VCAP_SERVICES is present. Lack of a property would indicate not running
+ * in a PCF environment. As such, this can now be configured to work locally as well as in PCF.
+ *
  * @see <a href="https://docs.spring.io/spring-data/gemfire/docs/2.1.0.M1/reference/html/#bootstrap-annotation-config-security-client" >SDG docs</a>
  *
- * @author Pulkit Chandra
+ * @author Pulkit Chandra (Modified by Mark Secrist)
  *
  * @since 1.0
  */
